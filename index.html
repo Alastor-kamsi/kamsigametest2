@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body class="text-center"
+    style="background-image: url('images/paintingmain.jpg'); background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: center;">
+
+    <div class="container" style="background-color: white; border: 2px solid black; border-radius: 20px;">
+
+        <div class="row">
+            <div class="col text-center mt-5 mx-3"
+                style="border-bottom: 5px solid black;  box-shadow: 5px 5px 10px black;">
+                <h1>Macrosoft Paint</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-center pt-3 m-5"
+                style="background-color: grey; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+                <p>Welcome to Macrosoft Paint, have fun a draw what ever you want!</p>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col col-2.5 my-5 ms-4 me-3 p-5 text-center" data-color="red"
+                style="background-color: white; border: 2px solid black ; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                <div class="row color p-5 my-4" data-color="red"
+                    style="background-color: white; background-color: red; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="blue"
+                    style="background-color: white; background-color: blue; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="yellow"
+                    style="background-color: white; background-color: yellow; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="orange"
+                    style="background-color: orange; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="green"
+                    style="background-color: green; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="purple"
+                    style="background-color: purple; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="black"
+                    style="background-color: black; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="grey"
+                    style="background-color: grey; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="white"
+                    style="background-color: white; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                </div>
+
+                <div class="row color p-5 my-4" data-color="white"
+                    style="background-color: white; background-color: white; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+                    <h4>Eraser</h4>
+                </div>
+            </div>
+
+            <div class="col col-8 my-5 me-3 text-center"
+                style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
+
+                <canvas id="paintCanvas" width="500px" height="1390px" class="col-12" style="background:white;"></canvas>
+
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+
+        const canvas = document.getElementById("paintCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let drawing = false;
+        let currentColor = "black";
+
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+
+        // Start drawing
+        canvas.addEventListener("mousedown", function (e) {
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(e.offsetX, e.offsetY);
+        });
+
+        // Draw
+        canvas.addEventListener("mousemove", function (e) {
+            if (!drawing) return;
+
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = currentColor;
+            ctx.lineWidth = 5;
+            ctx.lineCap = "round";
+            ctx.stroke();
+        });
+
+        // Stop drawing
+        canvas.addEventListener("mouseup", function () {
+            drawing = false;
+        });
+
+        canvas.addEventListener("mouseleave", function () {
+            drawing = false;
+        });
+
+        document.querySelectorAll(".color").forEach(box => {
+            box.addEventListener("click", function () {
+                currentColor = this.dataset.color;
+            });
+        });
+
+    </script>
+</body>
+
+</html>
