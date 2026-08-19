@@ -7,6 +7,23 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        
+        .paint-canvas { 
+            width: 100%; height: 75vh; display: block; background: white; touch-action: none;
+        }
+        
+        @media (max-width: 576px) {
+            .paint-canvas { height: 75vh; } 
+        } 
+        
+        @media (min-width: 577px) and (max-width: 1024px) {
+            .paint-canvas { height: 80vh; } 
+        }
+        
+    </style>
+    
 </head>
 
 <body class="text-center"
@@ -86,10 +103,7 @@
             <div class="col col-8 my-5 me-3 text-center"
                 style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
 
-                <canvas id="paintCanvas"
-                    class="col-12"
-                    style="width: 100%; height: auto; background: white; touch-action: none;">
-                </canvas>
+                <canvas id="paintCanvas" class="paint-canvas" style="background:white; touch-action:none;"> </canvas>
 
             </div>
         </div>
