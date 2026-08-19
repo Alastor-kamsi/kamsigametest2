@@ -86,7 +86,10 @@
             <div class="col col-8 my-5 me-3 text-center"
                 style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
 
-                <canvas id="paintCanvas" width="500px" height="1390px" class="col-12" style="background:white;"></canvas>
+                <canvas id="paintCanvas"
+                    class="col-12"
+                    style="width: 100%; height: auto; background: white; touch-action: none;">
+                </canvas>
 
             </div>
         </div>
@@ -101,7 +104,10 @@ const ctx = canvas.getContext("2d");
 let drawing = false;
 let currentColor = "black";
 
-// Make canvas fit its displayed size
+// Prevent the touchscreen from scrolling while drawing
+canvas.style.touchAction = "none";
+
+// Set canvas size
 canvas.width = canvas.clientWidth;
 canvas.height = canvas.clientHeight;
 
@@ -109,9 +115,12 @@ canvas.height = canvas.clientHeight;
 ctx.lineWidth = 5;
 ctx.lineCap = "round";
 ctx.lineJoin = "round";
+ctx.strokeStyle = currentColor;
 
-// Get the correct position on the canvas
+
+// Get the correct mouse/touch/stylus position
 function getPosition(e) {
+
     const rect = canvas.getBoundingClientRect();
 
     return {
@@ -120,11 +129,16 @@ function getPosition(e) {
     };
 }
 
+
 // Start drawing
 function startDrawing(e) {
+
     e.preventDefault();
 
     drawing = true;
+
+    // Keep track of the finger/mouse
+    canvas.setPointerCapture(e.pointerId);
 
     const position = getPosition(e);
 
@@ -132,68 +146,77 @@ function startDrawing(e) {
     ctx.moveTo(position.x, position.y);
 }
 
+
 // Draw
 function draw(e) {
-    if (!drawing) return;
+
+    if (!drawing) {
+        return;
+    }
 
     e.preventDefault();
 
     const position = getPosition(e);
 
     ctx.lineTo(position.x, position.y);
+
     ctx.strokeStyle = currentColor;
     ctx.stroke();
 }
 
+
 // Stop drawing
 function stopDrawing(e) {
-    if (!drawing) return;
+
+    if (!drawing) {
+        return;
+    }
 
     e.preventDefault();
 
     drawing = false;
+
     ctx.closePath();
 }
 
 
-// =========================
-// MOUSE CONTROLS
-// =========================
+// ======================================
+// MOUSE + TOUCHSCREEN + STYLUS
+// ======================================
 
-canvas.addEventListener("mousedown", startDrawing);
-canvas.addEventListener("mousemove", draw);
-canvas.addEventListener("mouseup", stopDrawing);
-canvas.addEventListener("mouseleave", stopDrawing);
+// Start
+canvas.addEventListener("pointerdown", startDrawing);
 
+// Draw
+canvas.addEventListener("pointermove", draw);
 
-// =========================
-// TOUCHSCREEN CONTROLS
-// =========================
-
-canvas.addEventListener("touchstart", startDrawing, { passive: false });
-canvas.addEventListener("touchmove", draw, { passive: false });
-canvas.addEventListener("touchend", stopDrawing, { passive: false });
-canvas.addEventListener("touchcancel", stopDrawing, { passive: false });
+// Stop
+canvas.addEventListener("pointerup", stopDrawing);
+canvas.addEventListener("pointercancel", stopDrawing);
+canvas.addEventListener("pointerleave", stopDrawing);
 
 
-// =========================
-// COLOR BUTTONS
-// =========================
+// ======================================
+// COLORS
+// ======================================
 
-document.querySelectorAll(".color").forEach(box => {
+document.querySelectorAll(".color").forEach(function (box) {
 
     box.addEventListener("click", function () {
+
         currentColor = this.dataset.color;
+
+        ctx.strokeStyle = currentColor;
+
     });
 
 });
 
 
-// =========================
+// ======================================
 // KEYBOARD / KEYPAD
-// =========================
+// ======================================
 
-// Number keys select colors
 document.addEventListener("keydown", function (e) {
 
     switch (e.key) {
@@ -237,7 +260,12 @@ document.addEventListener("keydown", function (e) {
         case "0":
             currentColor = "white";
             break;
+
+        default:
+            return;
     }
+
+    ctx.strokeStyle = currentColor;
 
 });
 
