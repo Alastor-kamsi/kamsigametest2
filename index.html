@@ -95,47 +95,151 @@
 
     <script type="text/javascript">
 
-        const canvas = document.getElementById("paintCanvas");
-        const ctx = canvas.getContext("2d");
+const canvas = document.getElementById("paintCanvas");
+const ctx = canvas.getContext("2d");
 
-        let drawing = false;
-        let currentColor = "black";
+let drawing = false;
+let currentColor = "black";
 
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+// Make canvas fit its displayed size
+canvas.width = canvas.clientWidth;
+canvas.height = canvas.clientHeight;
 
-        // Start drawing
-        canvas.addEventListener("mousedown", function (e) {
-            drawing = true;
-            ctx.beginPath();
-            ctx.moveTo(e.offsetX, e.offsetY);
-        });
+// Drawing settings
+ctx.lineWidth = 5;
+ctx.lineCap = "round";
+ctx.lineJoin = "round";
 
-        // Draw
-        canvas.addEventListener("mousemove", function (e) {
-            if (!drawing) return;
+// Get the correct position on the canvas
+function getPosition(e) {
+    const rect = canvas.getBoundingClientRect();
 
-            ctx.lineTo(e.offsetX, e.offsetY);
-            ctx.strokeStyle = currentColor;
-            ctx.lineWidth = 5;
-            ctx.lineCap = "round";
-            ctx.stroke();
-        });
+    return {
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top
+    };
+}
 
-        // Stop drawing
-        canvas.addEventListener("mouseup", function () {
-            drawing = false;
-        });
+// Start drawing
+function startDrawing(e) {
+    e.preventDefault();
 
-        canvas.addEventListener("mouseleave", function () {
-            drawing = false;
-        });
+    drawing = true;
 
-        document.querySelectorAll(".color").forEach(box => {
-            box.addEventListener("click", function () {
-                currentColor = this.dataset.color;
-            });
-        });
+    const position = getPosition(e);
+
+    ctx.beginPath();
+    ctx.moveTo(position.x, position.y);
+}
+
+// Draw
+function draw(e) {
+    if (!drawing) return;
+
+    e.preventDefault();
+
+    const position = getPosition(e);
+
+    ctx.lineTo(position.x, position.y);
+    ctx.strokeStyle = currentColor;
+    ctx.stroke();
+}
+
+// Stop drawing
+function stopDrawing(e) {
+    if (!drawing) return;
+
+    e.preventDefault();
+
+    drawing = false;
+    ctx.closePath();
+}
+
+
+// =========================
+// MOUSE CONTROLS
+// =========================
+
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseleave", stopDrawing);
+
+
+// =========================
+// TOUCHSCREEN CONTROLS
+// =========================
+
+canvas.addEventListener("touchstart", startDrawing, { passive: false });
+canvas.addEventListener("touchmove", draw, { passive: false });
+canvas.addEventListener("touchend", stopDrawing, { passive: false });
+canvas.addEventListener("touchcancel", stopDrawing, { passive: false });
+
+
+// =========================
+// COLOR BUTTONS
+// =========================
+
+document.querySelectorAll(".color").forEach(box => {
+
+    box.addEventListener("click", function () {
+        currentColor = this.dataset.color;
+    });
+
+});
+
+
+// =========================
+// KEYBOARD / KEYPAD
+// =========================
+
+// Number keys select colors
+document.addEventListener("keydown", function (e) {
+
+    switch (e.key) {
+
+        case "1":
+            currentColor = "red";
+            break;
+
+        case "2":
+            currentColor = "blue";
+            break;
+
+        case "3":
+            currentColor = "yellow";
+            break;
+
+        case "4":
+            currentColor = "orange";
+            break;
+
+        case "5":
+            currentColor = "green";
+            break;
+
+        case "6":
+            currentColor = "purple";
+            break;
+
+        case "7":
+            currentColor = "black";
+            break;
+
+        case "8":
+            currentColor = "grey";
+            break;
+
+        case "9":
+            currentColor = "white";
+            break;
+
+        case "0":
+            currentColor = "white";
+            break;
+    }
+
+});
 
     </script>
 </body>
