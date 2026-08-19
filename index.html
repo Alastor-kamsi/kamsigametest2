@@ -8,21 +8,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-    <style>
+<style> 
+    
+    .paint-canvas { 
+        width: 100%; height: 75vh; display: block; margin: 0 auto; background: white; touch-action: none; 
+    }
+    
+    @media (max-width: 576px) {
+        .paint-canvas { height: 75vh; 
+    } 
         
-        .paint-canvas { 
-            width: 100%; height: 75vh; display: block; background: white; touch-action: none;
-        }
-        
-        @media (max-width: 576px) {
-            .paint-canvas { height: 75vh; } 
-        } 
-        
-        @media (min-width: 577px) and (max-width: 1024px) {
-            .paint-canvas { height: 80vh; } 
-        }
-        
-    </style>
+    }@media (min-width: 577px) and (max-width: 1024px) {
+        .paint-canvas { height: 80vh; } 
+    } 
+    
+</style>
     
 </head>
 
@@ -103,7 +103,11 @@
             <div class="col col-8 my-5 me-3 text-center"
                 style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
 
-                <canvas id="paintCanvas" class="paint-canvas" style="background:white; touch-action:none;"> </canvas>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10 col-lg-8 my-5 text-center">
+                        <canvas id="paintCanvas" class="paint-canvas" style="background:white; touch-action:none;"></canvas> 
+                    </div>
+                </div>
 
             </div>
         </div>
