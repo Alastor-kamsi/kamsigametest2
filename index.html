@@ -4,9 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <title>Macrosoft Paint</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous">
 
     <style>
         #paintCanvas {
@@ -17,252 +21,411 @@
             touch-action: none;
         }
     </style>
-    
 </head>
 
 <body class="text-center"
-    style="background-image: url('images/paintingmain.jpg'); background-size: cover; background-size: cover; background-repeat: no-repeat; background-position: center;">
+    style="
+        background-image: url('images/paintingmain.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    ">
 
-    <div class="container" style="background-color: white; border: 2px solid black; border-radius: 20px;">
+    <div class="container"
+        style="
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 20px;
+        ">
 
+        <!-- Title -->
         <div class="row">
             <div class="col text-center mt-5 mx-3"
-                style="border-bottom: 5px solid black;  box-shadow: 5px 5px 10px black;">
+                style="
+                    border-bottom: 5px solid black;
+                    box-shadow: 5px 5px 10px black;
+                ">
+
                 <h1>Macrosoft Paint</h1>
+
             </div>
         </div>
 
+
+        <!-- Welcome Message -->
         <div class="row">
             <div class="col text-center pt-3 m-5"
-                style="background-color: grey; border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
-                <p>Welcome to Macrosoft Paint, have fun a draw what ever you want!</p>
+                style="
+                    background-color: grey;
+                    border: 2px solid black;
+                    border-radius: 20px;
+                    box-shadow: 5px 5px 10px black;
+                ">
+
+                <p>
+                    Welcome to Macrosoft Paint, have fun and draw whatever you want!
+                </p>
+
             </div>
         </div>
 
-    <div class="row text-center my-5 p-5" style="border:2px solid black; border-radius:20px;">
 
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="red"
-             style="background-color:red; border:2px solid black; border-radius:20px;"></div>
-    </div>
+        <!-- Color Palette -->
+        <div class="row text-center my-5 p-4"
+            style="
+                border: 5px solid black;
+                border-radius: 20px;
+            ">
 
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="blue"
-             style="background-color:blue; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="yellow"
-             style="background-color:yellow; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="orange"
-             style="background-color:orange; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="green"
-             style="background-color:green; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="purple"
-             style="background-color:purple; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="black"
-             style="background-color:black; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="grey"
-             style="background-color:grey; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <div class="col-4 p-2">
-        <div class="color p-4" data-color="white"
-             style="background-color:white; border:2px solid black; border-radius:20px;"></div>
-    </div>
-
-    <!-- Eraser underneath -->
-    <div class="col-12 mt-2">
-        <div class="color p-2 mx-auto"
-             data-color="white"
-             style="background-color:white; border:2px solid black; border-radius:20px; width:30%;">
-            <h6 class="mb-0">Eraser</h6>
-        </div>
-    </div>
-
-</div>
-            
-            <div class="row justify-content-center" 
-                style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
-                <div class="col-12 p-3">
-                    <canvas id="paintCanvas"></canvas>
+            <!-- Red -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="red"
+                    style="
+                        background-color: red;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
                 </div>
             </div>
-            
+
+
+            <!-- Blue -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="blue"
+                    style="
+                        background-color: blue;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Yellow -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="yellow"
+                    style="
+                        background-color: yellow;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Orange -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="orange"
+                    style="
+                        background-color: orange;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Green -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="green"
+                    style="
+                        background-color: green;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Purple -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="purple"
+                    style="
+                        background-color: purple;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Black -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="black"
+                    style="
+                        background-color: black;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Grey -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="grey"
+                    style="
+                        background-color: grey;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- White -->
+            <div class="col-4 p-2">
+                <div class="color p-4"
+                    data-color="white"
+                    style="
+                        background-color: white;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                    ">
+                </div>
+            </div>
+
+
+            <!-- Eraser -->
+            <div class="col-12 mt-2">
+                <div class="eraser p-2 mx-auto"
+                    data-color="eraser"
+                    style="
+                        background-color: white;
+                        border: 2px solid black;
+                        border-radius: 20px;
+                        width: 30%;
+                    ">
+
+                    <h6 class="mb-0">Eraser</h6>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Paint Canvas -->
+        <div class="row justify-content-center"
+            style="
+                border: 5px solid black;
+                border-radius: 20px;
+                box-shadow: 5px 5px 10px black;
+            ">
+
+            <div class="col-12 p-3">
+
+                <canvas id="paintCanvas"></canvas>
+
+            </div>
+
         </div>
 
     </div>
 
-    <script type="text/javascript">
 
-const canvas = document.getElementById("paintCanvas");
-const ctx = canvas.getContext("2d");
+    <!-- JavaScript -->
+    <script>
 
-let drawing = false;
-let currentColor = "black";
+        const canvas = document.getElementById("paintCanvas");
+        const ctx = canvas.getContext("2d");
 
-canvas.style.touchAction = "none";
-
-function resizeCanvas() {
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-}
-
-resizeCanvas();
-
-window.addEventListener("resize", resizeCanvas);
-
-ctx.lineWidth = 5;
-ctx.lineCap = "round";
-ctx.lineJoin = "round";
-ctx.strokeStyle = currentColor;
+        let drawing = false;
+        let currentColor = "black";
 
 
-function getPosition(e) {
-
-    const rect = canvas.getBoundingClientRect();
-
-    return {
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-    };
-}
+        // Canvas settings
+        canvas.style.touchAction = "none";
 
 
-function startDrawing(e) {
+        // Resize canvas
+        function resizeCanvas() {
 
-    e.preventDefault();
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
 
-    drawing = true;
-
-    // Keep track of the finger/mouse
-    canvas.setPointerCapture(e.pointerId);
-
-    const position = getPosition(e);
-
-    ctx.beginPath();
-    ctx.moveTo(position.x, position.y);
-}
+        }
 
 
-function draw(e) {
+        resizeCanvas();
 
-    if (!drawing) {
-        return;
-    }
-
-    e.preventDefault();
-
-    const position = getPosition(e);
-
-    ctx.lineTo(position.x, position.y);
-
-    ctx.strokeStyle = currentColor;
-    ctx.stroke();
-}
+        window.addEventListener("resize", resizeCanvas);
 
 
-function stopDrawing(e) {
-
-    if (!drawing) {
-        return;
-    }
-
-    e.preventDefault();
-
-    drawing = false;
-
-    ctx.closePath();
-}
-
-
-canvas.addEventListener("pointerdown", startDrawing);
-canvas.addEventListener("pointermove", draw);
-canvas.addEventListener("pointerup", stopDrawing);
-canvas.addEventListener("pointercancel", stopDrawing);
-canvas.addEventListener("pointerleave", stopDrawing);
-
-document.querySelectorAll(".color").forEach(function (box) {
-
-    box.addEventListener("click", function () {
-
-        currentColor = this.dataset.color;
-
+        // Drawing settings
+        ctx.lineWidth = 5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         ctx.strokeStyle = currentColor;
 
-    });
 
-});
+        // Get mouse/finger position
+        function getPosition(e) {
+
+            const rect = canvas.getBoundingClientRect();
+
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+
+        }
 
 
-document.addEventListener("keydown", function (e) {
+        // Start drawing
+        function startDrawing(e) {
 
-    switch (e.key) {
+            e.preventDefault();
 
-        case "1":
-            currentColor = "red";
-            break;
+            drawing = true;
 
-        case "2":
-            currentColor = "blue";
-            break;
+            canvas.setPointerCapture(e.pointerId);
 
-        case "3":
-            currentColor = "yellow";
-            break;
+            const position = getPosition(e);
 
-        case "4":
-            currentColor = "orange";
-            break;
+            ctx.beginPath();
 
-        case "5":
-            currentColor = "green";
-            break;
+            ctx.moveTo(position.x, position.y);
 
-        case "6":
-            currentColor = "purple";
-            break;
+        }
 
-        case "7":
-            currentColor = "black";
-            break;
 
-        case "8":
-            currentColor = "grey";
-            break;
+        // Draw
+        function draw(e) {
 
-        case "9":
+            if (!drawing) {
+                return;
+            }
+
+            e.preventDefault();
+
+            const position = getPosition(e);
+
+            ctx.lineTo(position.x, position.y);
+
+            ctx.strokeStyle = currentColor;
+
+            ctx.stroke();
+
+        }
+
+
+        // Stop drawing
+        function stopDrawing(e) {
+
+            if (!drawing) {
+                return;
+            }
+
+            e.preventDefault();
+
+            drawing = false;
+
+            ctx.closePath();
+
+        }
+
+
+        // Canvas events
+        canvas.addEventListener("pointerdown", startDrawing);
+
+        canvas.addEventListener("pointermove", draw);
+
+        canvas.addEventListener("pointerup", stopDrawing);
+
+        canvas.addEventListener("pointercancel", stopDrawing);
+
+        canvas.addEventListener("pointerleave", stopDrawing);
+
+
+        // Color buttons
+        document.querySelectorAll(".color").forEach(function (box) {
+
+            box.addEventListener("click", function () {
+
+                currentColor = this.dataset.color;
+
+                ctx.strokeStyle = currentColor;
+
+            });
+
+        });
+
+
+        // Eraser
+        document.querySelector(".eraser").addEventListener("click", function () {
+
             currentColor = "white";
-            break;
 
-        case "0":
-            currentColor = "white";
-            break;
+            ctx.strokeStyle = "white";
 
-        default:
-            return;
-    }
+        });
 
-    ctx.strokeStyle = currentColor;
 
-});
+        // Keyboard shortcuts
+        document.addEventListener("keydown", function (e) {
+
+            switch (e.key) {
+
+                case "1":
+                    currentColor = "red";
+                    break;
+
+                case "2":
+                    currentColor = "blue";
+                    break;
+
+                case "3":
+                    currentColor = "yellow";
+                    break;
+
+                case "4":
+                    currentColor = "orange";
+                    break;
+
+                case "5":
+                    currentColor = "green";
+                    break;
+
+                case "6":
+                    currentColor = "purple";
+                    break;
+
+                case "7":
+                    currentColor = "black";
+                    break;
+
+                case "8":
+                    currentColor = "grey";
+                    break;
+
+                case "9":
+                    currentColor = "white";
+                    break;
+
+                case "0":
+                    currentColor = "white";
+                    break;
+
+                default:
+                    return;
+
+            }
+
+            ctx.strokeStyle = currentColor;
+
+        });
 
     </script>
+
 </body>
 
 </html>
