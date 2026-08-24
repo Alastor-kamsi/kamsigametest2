@@ -7,29 +7,6 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
-<style> 
-    
-.paint-canvas {
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: white;
-    touch-action: none;
-}
-
-.canvas-container {
-    height: 600px;
-    padding: 0;
-}
-
-@media (max-width: 576px) {
-    .canvas-container {
-        height: 400px;
-    }
-}
-    
-</style>
     
 </head>
 
@@ -111,8 +88,8 @@
                 style="border: 2px solid black; border-radius: 20px; box-shadow: 5px 5px 10px black;">
 
                 <div class="row justify-content-center">
-                    <div class="col-12 col-md-10 col-lg-8 my-5 text-center">
-                        <canvas id="paintCanvas" class="paint-canvas" style="background:white; touch-action:none;"></canvas> 
+                    <div class="col-12 col-md-12 col-lg-12 my-5 text-center">
+                        <canvas id="paintCanvas" class="col-12" style="background:white;"></canvas> 
                     </div>
                 </div>
 
